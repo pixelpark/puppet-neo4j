@@ -101,9 +101,36 @@ class neo4j::params {
   $run_dir                                            = '/var/run'
   $service_enable                                     = true
   $service_ensure                                     = 'running'
+  $service_name                                       = 'neo4j'
   $service_start                                      = 'neo4j start'
   $service_status                                     = 'neo4j status'
   $service_stop                                       = 'neo4j stop'
   $user                                               = 'neo4j'
   $version                                            = '3.0.0'
+
+  case $::osfamily {
+    'Debian' : {
+      case $::operatingsystemrelease {
+        /7.*/ : {
+          $service_provider = 'debian'
+        }
+        default : {
+          $service_provider = 'systemd'
+        }
+      }
+    }
+    'RedHat' : {
+      case $::operatingsystemrelease {
+        /6.*/ : {
+          $service_provider = 'redhat'
+        }
+        default : {
+          $service_provider = 'systemd'
+        }
+      }
+    }
+    default: {
+      fail("Unsupported osfamily ${::osfamily}, only support for Debian and RedHat")
+    }
+  }
 }

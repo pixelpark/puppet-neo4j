@@ -134,6 +134,8 @@ class neo4j (
   ### variables service.pp
   $service_enable                                     = $neo4j::params::service_enable,
   $service_ensure                                     = $neo4j::params::service_ensure,
+  $service_name                                       = $neo4j::params::service_name,
+  $service_provider                                   = $neo4j::params::service_provider,
   $service_start                                      = $neo4j::params::service_start,
   $service_status                                     = $neo4j::params::service_status,
   $service_stop                                       = $neo4j::params::service_stop,

@@ -97,6 +97,7 @@ class neo4j::params {
   $install_method                                     = 'package'
   $install_prefix                                     = '/usr/share'
   $package_name                                       = 'neo4j'
+  $pidfile                                            = '/var/run/neo4j.pid'
   $source_release                                     = '3.0.7'
   $run_dir                                            = '/var/run'
   $service_enable                                     = true

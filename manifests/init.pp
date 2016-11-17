@@ -87,6 +87,7 @@
 # [*install_method*]
 # [*install_prefix*]
 # [*package_name*]
+# [*pidfile*]
 # [*run_dir*]
 # [*service_enable*]
 # [*service_ensure*]

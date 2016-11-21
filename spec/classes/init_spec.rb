@@ -3,7 +3,7 @@ describe 'neo4j', :type => :class do
   context "on a Debian OS 7" do
     let :facts do
       {
-	:architecture           => 'x86_64',
+	      :architecture           => 'x86_64',
         :id                     => 'root',
         :ipaddress              => '127.0.0.1',
         :kernel                 => 'Linux',
@@ -11,6 +11,7 @@ describe 'neo4j', :type => :class do
         :osfamily               => 'Debian',
         :operatingsystem        => 'Debian',
         :operatingsystemrelease => '7.11',
+        :path                   => '/usr/bin',
       }
     end
     it { is_expected.to contain_class('neo4j') }
@@ -19,7 +20,7 @@ describe 'neo4j', :type => :class do
   context "on a Debian OS 8" do
     let :facts do
       {
-	:architecture           => 'x86_64',
+	      :architecture           => 'x86_64',
         :id                     => 'root',
         :ipaddress              => '127.0.0.1',
         :kernel                 => 'Linux',
@@ -27,6 +28,7 @@ describe 'neo4j', :type => :class do
         :osfamily               => 'Debian',
         :operatingsystem        => 'Debian',
         :operatingsystemrelease => '8.5',
+        :path                   => '/usr/bin',
       }
     end
     it { is_expected.to contain_class('neo4j') }

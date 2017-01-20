@@ -4,10 +4,11 @@ Description=Neo4J Service
 After=network.target
 
 [Service]
-Type=simple
+Type=forking
 User=<%= @user %>
 PIDFile=<%= @home-%>/run/neo4j.pid
-ExecStart=<%= @home-%>/bin/<%=@service_start-%>,
+ExecStart=<%= @home-%>/bin/<%=@service_start-%>
+ExecStart=<%= @home-%>/bin/<%=@service_stop-%>
 Restart=on-failure
 
 [Install]

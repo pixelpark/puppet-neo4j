@@ -1,0 +1,14 @@
+# Managed by Puppet
+[Unit]
+Description=Neo4J Service
+After=network.target
+
+[Service]
+Type=simple
+User=<%= @user %>
+PIDFile=<%= @home-%>/run/neo4j.pid
+ExecStart=<%= @home-%>/bin/<%=@service_start-%>,
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

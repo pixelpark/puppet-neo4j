@@ -137,6 +137,7 @@ class neo4j (
   $service_start                                      = $neo4j::params::service_start,
   $service_status                                     = $neo4j::params::service_status,
   $service_stop                                       = $neo4j::params::service_stop,
+  $service_systemd                                    = $neo4j::params::service_systemd,
 
   ### variables neo4j.conf - general
   $allow_load_csv                                     = $neo4j::params::allow_load_csv,
@@ -257,6 +258,7 @@ class neo4j (
     $ha_slave_only,
     $install_java,
     $service_enable,
+    $service_systemd
   )
 
   validate_integer([

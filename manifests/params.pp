@@ -104,6 +104,7 @@ class neo4j::params {
   $service_start                                      = 'neo4j start'
   $service_status                                     = 'neo4j status'
   $service_stop                                       = 'neo4j stop'
+  $service_systemd                                    = false
   $user                                               = 'neo4j'
   $version                                            = '3.0.0'
 }

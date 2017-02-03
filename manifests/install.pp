@@ -133,7 +133,7 @@ class neo4j::install (
       $service_file = "/etc/systemd/system/neo4j.service"
       file { $service_file:
         ensure  => file,
-        mode    => '0755',
+        mode    => '0644',
         owner   => 'root',
         group   => 'root',
         content => template('neo4j/systemd.erb'),

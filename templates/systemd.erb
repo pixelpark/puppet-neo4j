@@ -8,7 +8,7 @@ Type=forking
 User=<%= @user %>
 LimitNOFILE=40000
 ExecStart=<%= @install_prefix -%>/neo4j/bin/neo4j start
-ExecStart=<%= @install_prefix -%>/neo4j/bin/neo4j stop
+ExecStop=<%= @install_prefix -%>/neo4j/bin/neo4j stop
 Restart=on-failure
 
 [Install]

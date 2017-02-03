@@ -12,8 +12,9 @@
 # Copyright 2016 Marc Lambrichs, unless otherwise noted.
 #
 class neo4j::config (
-  $default_file = $neo4j::default_file,
-  $config_dir   = $neo4j::neo4j_home,
+  $default_file   = $neo4j::default_file,
+  $install_method = $neo4j::install_method,
+  $neo4j_home     = $neo4j::neo4j_home
 )
 {
   ### variables default/sysconfig
@@ -31,9 +32,19 @@ class neo4j::config (
     before  => Service['neo4j'],
     notify  => Service['neo4j'],
   }
-
-  $config_file = "${config_dir}/neo4j.conf"
-
+  case $install_method {
+    'package': {
+      $config_dir  = $neo4j_home
+      $config_file = "${config_dir}/neo4j.conf"
+    }
+    'archive': {
+      $config_dir     = "${neo4j_home}/conf"
+      $config_file = "${config_dir}/neo4j.conf"
+    }
+    default: {
+      fail("Installation method ${install_method} not supported.")
+    }
+  }
   concat { $config_file :
     owner  => $neo4j::user,
     mode   => '0644',
@@ -170,7 +181,7 @@ class neo4j::config (
   $dbms_memory_heap_max_size                          = $neo4j::dbms_memory_heap_max_size
 
   file { 'neo4j-wrapper.conf':
-    path    => "${neo4j::neo4j_home}/neo4j-wrapper.conf",
+    path    => "${config_dir}/neo4j-wrapper.conf",
     content => template('neo4j/neo4j-wrapper.conf.erb'),
   }
 }

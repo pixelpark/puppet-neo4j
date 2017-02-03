@@ -345,9 +345,7 @@ class neo4j (
   }
 
   if ( $data_prefix ) {
-    if ( validate_absolute_path($data_prefix) ) {
-      fail('$data_prefix should contain an absolute path')
-    }
+    validate_absolute_path($data_prefix)
     $data_dir = $data_prefix
   } else {
     $data_dir = "${install_prefix}/data"

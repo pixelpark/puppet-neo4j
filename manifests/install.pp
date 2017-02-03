@@ -87,6 +87,8 @@ class neo4j::install (
       }
 
       file { $data_dir:
+        owner  => $user,
+        group  => $group,
         ensure => directory,
       }
 
@@ -119,6 +121,11 @@ class neo4j::install (
         group        => $group,
         creates      => "${neo4j_home}/bin",
         require      => File[$neo4j_home],
+      }
+
+      file {"${install_prefix}/neo4j":
+        ensure => 'link',
+        target => $neo4j_home,
       }
     }
     default: {

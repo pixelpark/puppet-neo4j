@@ -129,6 +129,24 @@ class neo4j::install (
         ensure => 'link',
         target => $neo4j_home,
       }
+      # Place Service Files
+      $service_file = "/etc/systemd/system/neo4j.service"
+      file { $service_file:
+        ensure  => file,
+        mode    => '0755',
+        owner   => 'root',
+        group   => 'root',
+        content => template('neo4j/systemd.erb'),
+        notify  => Exec['systemctl_reload_neo4j'],
+      }
+      if !defined(Exec['systemctl_reload_neo4j']) {
+        exec { 'systemctl_reload_neo4j':
+          command     => '/bin/systemctl daemon-reload',
+          user        => 'root',
+          group       => 'root',
+          refreshonly => true,
+        }
+      }
     }
     default: {
       fail("Installation method ${install_method} not supported.")

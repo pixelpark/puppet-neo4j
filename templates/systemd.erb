@@ -1,0 +1,15 @@
+# Managed by Puppet
+[Unit]
+Description=Neo4J Service
+After=network.target
+
+[Service]
+Type=forking
+User=<%= @user %>
+LimitNOFILE=40000
+ExecStart=<%= @install_prefix -%>/neo4j/bin/neo4j start
+ExecStart=<%= @install_prefix -%>/neo4j/bin/neo4j stop
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

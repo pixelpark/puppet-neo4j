@@ -97,6 +97,8 @@ class neo4j::install (
       if ( $log_dir ){
         file { $log_dir:
           ensure => directory,
+          owner   => $user,
+          group   => $group,
           mode   => '0644'
         }
       }

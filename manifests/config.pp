@@ -80,6 +80,7 @@ class neo4j::config (
   $dbms_connector_http_accept_non_local_connections  = $neo4j::dbms_connector_http_accept_non_local_connections
   $dbms_connector_bolt_enabled                       = $neo4j::dbms_connector_bolt_enabled
   $dbms_connector_bolt_tls_level                     = $neo4j::dbms_connector_bolt_tls_level
+  $dbms_connector_bolt_port                          = $neo4j::dbms_connector_bolt_port
   $dbms_connector_http_enabled                       = $neo4j::dbms_connector_http_enabled
   $dbms_connector_http_port                          = $neo4j::dbms_connector_http_port
   $dbms_connector_https_accept_non_local_connections = $neo4j::dbms_connector_https_accept_non_local_connections

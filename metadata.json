@@ -1,10 +1,10 @@
 {
-    "name": "mlambrichs-neo4j",
-    "version": "1.2.5",
+    "name": "pixelpark-neo4j",
+    "version": "1.2.6",
     "author": "Marc Lambrichs <marc.lambrichs@gmail.com>",
     "license": "Apache-2.0",
     "summary": "A module installing and configuring Neo4j community or enterprise editions.",
-    "source": "https://github.com/mlambrichs/puppet-neo4j",
+    "source": "https://github.com/pixelpark/puppet-neo4j.git",
     "project_page": "https://github.com/mlambrichs/puppet-neo4j",
     "issues_url": "https://github.com/mlambrichs/puppet-neo4j/issues",
     "tags": ["neo", "neo4j", "nosql", "graph", "database", "relationship"],
